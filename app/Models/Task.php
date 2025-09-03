@@ -44,4 +44,14 @@ class Task extends Model
             $query->whereLike('title', "%{$search}%");
         });
     }
+
+    #[Scope()]
+    public function filter(Builder $query, ?string $status = null, ?string $assignedToId = null): void
+    {
+        $query->when($status, function (Builder $query, $status) {
+            $query->where('status', $status);
+        })->when($assignedToId, function (Builder $query, $assignedToId) {
+            $query->where('assigned_to_id', $assignedToId);
+        });
+    }
 }

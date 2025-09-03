@@ -3,9 +3,10 @@
 use App\Http\Controllers\Api\Auth\LoginController;
 use App\Http\Controllers\Api\Auth\LogoutController;
 use App\Http\Controllers\Api\Auth\RegisterController;
-use App\Http\Controllers\Api\Auth\UserController;
+use App\Http\Controllers\Api\Auth\UserController as AuthUserController;
 use App\Http\Controllers\Api\Project\ProjectController;
 use App\Http\Controllers\Api\Project\Task\TaskProjectController;
+use App\Http\Controllers\Api\User\UserController;
 use Illuminate\Support\Facades\Route;
 
 Route::prefix('auth')->group(function () {
@@ -18,6 +19,7 @@ Route::middleware('auth:sanctum')->group(function () {
 
     Route::resource('/projects', ProjectController::class);
     Route::resource('/projects/{project}/tasks', TaskProjectController::class);
+    Route::resource('/users', UserController::class);
 
-    Route::get('/user', UserController::class);
+    Route::get('/user', AuthUserController::class);
 });

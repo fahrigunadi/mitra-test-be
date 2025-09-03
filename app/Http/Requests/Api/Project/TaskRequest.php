@@ -13,7 +13,7 @@ class TaskRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return true;
+        return $this->user()->role->isAdmin() || $this->route('task') === null || $this->user()->id === $this->route('task')->assigned_to_id;
     }
 
     /**

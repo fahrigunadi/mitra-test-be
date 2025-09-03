@@ -22,6 +22,7 @@ class TaskProjectController extends Controller
         $tasks = $project->tasks()
             ->latest('created_at')
             ->search($request->search)
+            ->filter($request->status, $request->assigned_to_id)
             ->paginate($request->input('per_page', 10))
             ->onEachSide(1)
             ->withQueryString();
