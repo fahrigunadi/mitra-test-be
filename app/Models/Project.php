@@ -23,4 +23,9 @@ class Project extends Model
                 ->orWhereLike('end_date', "%{$search}%");
         });
     }
+
+    public function tasks()
+    {
+        return $this->hasMany(Task::class);
+    }
 }

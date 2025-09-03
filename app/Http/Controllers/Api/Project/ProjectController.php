@@ -23,6 +23,7 @@ class ProjectController extends Controller
             ->latest('created_at')
             ->search($request->search)
             ->paginate($request->input('per_page', 10))
+            ->onEachSide(1)
             ->withQueryString();
 
         return ProjectResource::collection($projects);
