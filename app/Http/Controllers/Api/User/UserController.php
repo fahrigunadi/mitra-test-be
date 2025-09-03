@@ -2,13 +2,13 @@
 
 namespace App\Http\Controllers\Api\User;
 
-use App\Models\User;
-use Illuminate\Http\Request;
-use Illuminate\Http\Response;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\UserResource;
-use Illuminate\Support\Facades\Gate;
+use App\Models\User;
+use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\AnonymousResourceCollection;
+use Illuminate\Http\Response;
+use Illuminate\Support\Facades\Gate;
 
 class UserController extends Controller
 {
