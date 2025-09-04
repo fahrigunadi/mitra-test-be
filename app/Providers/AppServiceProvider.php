@@ -22,5 +22,9 @@ class AppServiceProvider extends ServiceProvider
     {
         Gate::define('role-admin', fn ($user): bool => $user->role->isAdmin());
         Gate::define('role-member', fn ($user): bool => $user->role->isMember());
+
+        if($this->app->environment('production')) {
+            \URL::forceScheme('https');
+        }
     }
 }
